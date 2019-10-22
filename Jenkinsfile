@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        bat(script: 'cd CBoard', label: 'build-dir')
-        bat(script: 'mvn clean compile', label: 'build-mvn')
+        bat(script: '''cd CBoard
+mvn clean compile''', label: 'build-compile')
       }
     }
     stage('test') {
       steps {
-        bat(script: 'cd junitpro', label: 'test-dir')
-        bat(script: 'mvn clean test', label: 'mvn-xunit')
+        bat(script: '''cd junipro
+mvn clean test''', label: 'test-xunit')
       }
     }
   }
