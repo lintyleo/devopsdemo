@@ -3,6 +3,7 @@
 ## Agile
 - Scrum
 - Kanban
+- ScrumBan
 
 ## CI
 - Git
