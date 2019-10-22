@@ -3,18 +3,23 @@ pipeline {
   stages {
     stage('build') {
       steps {
-		dir('CBoard') {
-			// some block
-			bat(script: 'mvn clean compile', label: 'build-compile')
-		}
+        dir(path: 'CBoard') {
+          bat(script: 'mvn clean compile', label: 'build-compile')
+        }
+
       }
     }
     stage('test') {
       steps {
-	    dir('junitpro') {
-			// some block
-			bat(script: 'mvn clean test', label: 'test-xunit')
-		}
+        dir(path: 'junitpro') {
+          bat(script: 'mvn clean test', label: 'test-xunit')
+        }
+
+      }
+    }
+    stage('') {
+      steps {
+        jiraComment(issueKey: 'SCRUM-3', body: 'kkk')
       }
     }
   }
