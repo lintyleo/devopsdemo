@@ -17,7 +17,7 @@ pipeline {
 
       }
     }
-    stage('') {
+    stage('update') {
       steps {
         jiraComment(issueKey: 'SCRUM-3', body: 'kkk')
       }
