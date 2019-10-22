@@ -1,0 +1,8 @@
+# Requirements needed when generating releases
+pytest >= 4.4.1
+selenium >= 3.141.0
+pymysql >= 0.9.3
+pyyaml >= 5.1
+allure-pytest >= 2.6.2
+pytest-html >= 1.20.0
+pytest-rerunfailures >= 7.0

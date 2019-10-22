@@ -1,0 +1,26 @@
+LoginPage:
+  LOCATOR:
+    ACCOUNT_INPUT: "s, #account"
+    PASSWORD_INPUT: "x, //*[@id='loginPanel']/div/div[2]/form/table/tbody/tr[2]/td/input"
+    KEEP_INPUT: "s, #keepLoginon"
+    SUBMIT_BUTTON: "s, #submit"
+    LANGUAGE_BUTTON: "s, #langs > button"
+    ZH_HANS_MENU: "s, #langs > ul > li:nth-child(1)"
+    ZH_HANT_MENU: "s, #langs > ul > li:nth-child(2)"
+    EN_MENU: "s, #langs > ul > li:nth-child(3)"
+    DE_MENU: "s, #langs > ul > li:nth-child(4)"
+
+IndexPage:
+  LOCATOR:
+    REAL_NAME_SPAN: "s, #userNav > li > a > span.user-name"
+    MY_LI: "s, #navbar > ul > li:nth-child(1)"
+    PRODCUT_LI: "s, #navbar > ul > li:nth-child(2)"
+    PROJECT_LI: "s, #navbar > ul > li:nth-child(3)"
+    QA_LI: "s, #navbar > ul > li:nth-child(4)"
+    OPS_LI: "s, #navbar > ul > li:nth-child(6)"
+    OA_LI: "s, #navbar > ul > li:nth-child(7)"
+    FEEDBACK_LI: "s, #navbar > ul > li:nth-child(8)"
+    MDOC_LI: "s, #navbar > ul > li:nth-child(9)"
+    REPORT_LI: "s, #navbar > ul > li:nth-child(10)"
+    COMPANY_LI: "s, #navbar > ul > li:nth-child(12)"
+    ADMIN_LI: "s, #navbar > ul > li:nth-child(13)"

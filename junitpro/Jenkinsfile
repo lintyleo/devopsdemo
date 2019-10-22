@@ -1,0 +1,53 @@
+pipeline {
+  agent any
+  stages {
+    stage('build') {
+      parallel {
+        stage('build-clean') {
+          steps {
+            bat(script: 'mvn clean', label: 'clean')
+          }
+        }
+        stage('build-compile') {
+          steps {
+            bat(script: 'mvn compile', label: 'compile')
+          }
+        }
+        stage('build-test') {
+          steps {
+            bat(script: 'mvn test', label: 'test')
+          }
+        }
+        
+      }
+    }
+    stage('test') {
+      parallel {
+        stage('test-checkout') {
+          steps {
+            git(url: 'https://github.com/lintyleo/hatapi.git', branch: '*/master', credentialsId: 'lintyleo')
+          }
+        }
+        stage('test-run') {
+          steps {
+            bat 'cd runner'
+            bat(script: 'run_seniverse_life_suggest_test.bat', label: 'test-run')
+          }
+        }
+      }
+    }
+  }
+  post('reports') {
+          steps {
+            script {
+              allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'report/allure/target']]
+              ])
+            }
+          }
+        }
+}

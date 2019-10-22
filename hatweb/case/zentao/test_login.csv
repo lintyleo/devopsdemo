@@ -1,0 +1,6 @@
+account,password,language,exp_button_lang,expected_url,expected_real_name
+demo,123456,zh_Hans,简体,my/,Demo
+productManager,123456,zh_Hant,繁體,my/,	产品经理1
+project.Manager,123456,en,English,my/,项目经理
+dev1,123456,zh_Hans,简体,my/,开发甲
+tester1,123456,de,Deutsch,my/,测试甲
