@@ -3,23 +3,64 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        dir(path: 'CBoard') {
+        dir(path: 'mvndemo') {
           bat(script: 'mvn clean compile', label: 'build-compile')
         }
 
       }
     }
     stage('test') {
-      steps {
-        dir(path: 'junitpro') {
-          bat(script: 'mvn clean test', label: 'test-xunit')
-        }
+      parallel {
+        stage('test-xunit') {
+          steps {
+            dir(path: 'junitpro') {
+              bat(script: 'mvn clean test', label: 'test-xunit')
+            }
 
+            dir(path: 'mvndemo') {
+              bat(script: 'mvn test', label: 'xunit')
+            }
+
+          }
+        }
+        stage('test-xunit2') {
+          steps {
+            dir(path: 'junitpro') {
+              bat(script: 'mvn test', label: 'xunit2')
+            }
+
+          }
+        }
       }
     }
-    stage('update') {
+    stage('automate') {
+      parallel {
+        stage('automate-api') {
+          steps {
+            dir(path: 'hatapi/runner') {
+              bat(script: 'run_seniverse_life_suggest_test.bat', label: 'automate2')
+            }
+
+          }
+        }
+        stage('automate-web') {
+          steps {
+            dir(path: 'hatweb/runner') {
+              bat(script: 'run_zentao_login_test.bat', label: 'web')
+            }
+
+          }
+        }
+      }
+    }
+    stage('deploy') {
       steps {
-        jiraComment(issueKey: 'SCRUM-3', body: 'kkk')
+        echo 'deploy mvndemo'
+      }
+    }
+    stage('post') {
+      steps {
+        echo 'post'
       }
     }
   }
